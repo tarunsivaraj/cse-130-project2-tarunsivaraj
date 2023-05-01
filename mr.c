@@ -35,10 +35,10 @@ void map_reduce(mapper_t mapper, size_t num_mapper, reducer_t reducer,
 
   pthread_t map_threadss[num_reducer];
   for (size_t i = 0; i < num_reducer; i++) {
-    pthread_create(&map_threadss[i], NULL, (void* (*)(void*))reducer, splits[i]);
+    pthread_create(&map_threadss[i], NULL, (void* (*)(void*))reducer,
+                   splits[i]);
   }
   for (size_t i = 0; i < num_reducer; i++) {
     pthread_join(map_threadss[i], NULL);
   }
-  
 }
